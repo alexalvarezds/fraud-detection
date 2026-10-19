@@ -1,13 +1,7 @@
-# fraud-detection
+# Fraud Detection Project
 
-El Problema Real
+Money laundering is a global problem that moves an estimated 2 to 5 percent of global GDP through the financial system every year. Banks are required by law to detect and report suspicious activity, but the systems they use today are largely based on static rules: flag any transaction above a certain amount, flag transfers to high-risk countries, flag unusual activity on dormant accounts. The result is that over 95% of the alerts these systems generate turn out to be false positives. Compliance teams spend most of their time reviewing transactions that are perfectly normal, while coordinated laundering schemes go undetected.
 
-Los sistemas antifraude legacy de la banca funcionan con reglas estáticas ("si transacción > X€ y país != habitual → alerta"). Resultado:
+The core issue is that these systems look at transactions one by one. But modern laundering does not happen in a single transaction. It involves networks of accounts, often across multiple banks and countries, where money is split, layered, and recombined in ways that make each individual transfer look ordinary. The suspicious pattern only becomes visible when you look at the connections between accounts, not the transactions themselves.
 
-~95% de falsos positivos — los analistas están enterrados en alertas inútiles
-Los fraudes coordinados son invisibles — synthetic identity fraud, mule networks, y smurfing implican múltiples cuentas que individualmente parecen normales
-Concept drift — los defraudadores se adaptan en días; tu modelo de ayer no sirve mañana
-
-La clave: el fraude sofisticado no vive en las transacciones, vive en la topología del grafo.
-
-Una cuenta que recibe dinero de 50 cuentas distintas recién creadas y lo envía a una sola cuenta en otro país es obvia cuando miras el grafo. Mirando transacciones individuales, cada una parece legítima.
+This project approaches anti-money laundering as a graph problem. Accounts are nodes, transactions are edges, and the goal is to learn structural patterns in the network that distinguish legitimate activity from laundering. We start with traditional machine learning baselines and progressively introduce graph neural networks that can capture these multi-hop relationships across the transaction network.
